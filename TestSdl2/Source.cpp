@@ -44,6 +44,11 @@ void InitSDL()
 	}
 }
 
+void mathCoordsToScreen(double x, double y, double scale, int centerX, int centerY, int &sx, int &sy) 
+{
+	sx = round(centerX + x * scale);
+	sy = round(centerY - y * scale);
+}
 
 int main(int argc, char* argv[])
 {
@@ -55,10 +60,93 @@ int main(int argc, char* argv[])
 	SDL_SetRenderDrawColor(renderer, 128, 0, 128, 255);
 	SDL_RenderDrawLine(renderer, 0, 100, width, 100);
 
+	int basePoints = 3;
+	bool Multy = true;
+	bool IsRUN = true;
+	//=========================
+	int win_width = width;
+	int win_height = height;
 
-	SDL_RenderPresent(renderer);
+	SDL_Event sdlEvent;
 
-	SDL_Delay(10000);
+	int mouse_x = win_width / 2;
+	int mouse_y = win_height / 2;
+
+	//=========================
+	while (IsRUN)
+	{
+
+		while (SDL_PollEvent(&sdlEvent))
+		{
+			switch (sdlEvent.type)
+			{
+			case SDL_QUIT:
+				IsRUN = false;
+				break;
+			case SDL_WINDOWEVENT:
+				if (sdlEvent.window.event == SDL_WINDOWEVENT_RESIZED)
+				{
+					win_width = sdlEvent.window.data1;
+					win_height = sdlEvent.window.data2;
+				}
+				break;
+
+			case SDL_MOUSEBUTTONDOWN:
+				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
+				{
+					mouse_x = sdlEvent.button.x;
+					mouse_y = sdlEvent.button.y;
+				}
+				break;
+
+			default: break;
+
+			}
+		}
+
+
+        #pragma region DRAWNING
+		SDL_SetRenderDrawColor(renderer, 128, 128, 0, 255);
+		SDL_RenderClear(renderer);
+
+		int countPoints = basePoints;
+		SDL_Point* points = (SDL_Point*)malloc(sizeof(SDL_Point) * (countPoints + 1));
+
+		float alfa = 0;
+		for (int i = 0; i < countPoints; i++)
+		{
+			alfa += 2 * M_PI / countPoints;
+			mathCoordsToScreen(200 * cos(alfa), 200 * sin(alfa), 1.0,
+				//win_width / 2, win_height / 2,
+				mouse_x, mouse_y,
+				points[i].x, points[i].y);
+		}
+
+		points[countPoints] = points[0];
+		SDL_SetRenderDrawColor(renderer, 100, 50, 0, 255);
+		SDL_RenderDrawLines(renderer, points, countPoints + 1);
+
+		free(points);
+
+		if (Multy)
+		{
+			basePoints++;
+		}
+		else
+		{
+			basePoints--;
+		}
+
+		if (Multy && basePoints > 100 || !Multy && basePoints <= 3)
+		{
+			Multy = !Multy;
+		}
+        #pragma endregion
+
+	    SDL_RenderPresent(renderer);
+	    SDL_Delay(100);
+
+    }
 
 	DeInitSDL(0);
 	return 0;

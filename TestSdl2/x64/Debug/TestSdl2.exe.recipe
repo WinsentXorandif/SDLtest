@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Temp\CPPsdl2Test\TestSdl2\x64\Debug\TestSdl2.exe</FullPath>
+      <FullPath>C:\GIT\SDLtest\x64\Debug\TestSdl2.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
