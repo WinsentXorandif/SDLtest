@@ -1,5 +1,6 @@
 #include<iostream>
 #include<SDL.h>
+#include<SDL_image.h>
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
@@ -12,6 +13,7 @@ void DeInitSDL(int error)
 {
 	if (renderer != NULL) SDL_DestroyRenderer(renderer);
 	if (window != NULL) SDL_DestroyWindow(window);
+	IMG_Quit();
 	SDL_Quit();
 	exit(error);
 
@@ -24,6 +26,15 @@ void InitSDL()
 		printf("Init SDL Error: %s", SDL_GetError());
 		DeInitSDL(1);
 	}
+
+	int res;
+	if ((res = IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG )) == 0)
+	{
+		printf("Init SDL_Image Error: %s", SDL_GetError());
+		DeInitSDL(1);
+	}
+	if (res & IMG_INIT_PNG)printf("Initialized PNG library!\n");
+	if (res & IMG_INIT_JPG)printf("Initialized JPG library!\n");
 
 	window = SDL_CreateWindow("Test SDL Window", 
 		SDL_WINDOWPOS_CENTERED, 
@@ -53,7 +64,19 @@ void mathCoordsToScreen(double x, double y, double scale, int centerX, int cente
 int main(int argc, char* argv[])
 {
 	InitSDL();
+	//----------------
+	SDL_Surface* surface = IMG_Load("Image/Start02.png");
+	if (surface == NULL) 
+	{
+		printf("Could not load image! Error: %s", SDL_GetError());
+		DeInitSDL(1);
+	}
 
+	SDL_Surface* win_surf = SDL_GetWindowSurface(window);
+
+
+
+	//----------------
 	SDL_SetRenderDrawColor(renderer, 128, 128, 0, 255);
 	SDL_RenderClear(renderer);
 
@@ -143,10 +166,20 @@ int main(int argc, char* argv[])
 		}
         #pragma endregion
 
-	    SDL_RenderPresent(renderer);
+		//----------------
+		SDL_Rect scrRect = { 0, 0, 512, 512 };
+		SDL_Rect dstRect = { 100, 100, 200, 200 };
+
+		SDL_BlitSurface(surface, &scrRect, win_surf, NULL);//&dstRect);
+		SDL_UpdateWindowSurface(window);
+		//----------------
+
+	    //SDL_RenderPresent(renderer);
 	    SDL_Delay(100);
 
     }
+
+	SDL_FreeSurface(surface);
 
 	DeInitSDL(0);
 	return 0;
