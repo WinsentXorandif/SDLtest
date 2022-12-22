@@ -5,8 +5,8 @@
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 
-const int width = 800;
-const int height = 600;
+const int width = 1024;
+const int height = 800;
 
 
 void DeInitSDL(int error)
@@ -64,8 +64,10 @@ void mathCoordsToScreen(double x, double y, double scale, int centerX, int cente
 int main(int argc, char* argv[])
 {
 	InitSDL();
-	//----------------
-	SDL_Surface* surface = IMG_Load("Image/Start02.png");
+
+	//----------------OLD Drawning Button setup
+	/*
+	SDL_Surface* surface = IMG_Load("Image/start33.png");
 	if (surface == NULL) 
 	{
 		printf("Could not load image! Error: %s", SDL_GetError());
@@ -73,15 +75,8 @@ int main(int argc, char* argv[])
 	}
 
 	SDL_Surface* win_surf = SDL_GetWindowSurface(window);
-
-
-
+	*/
 	//----------------
-	SDL_SetRenderDrawColor(renderer, 128, 128, 0, 255);
-	SDL_RenderClear(renderer);
-
-	SDL_SetRenderDrawColor(renderer, 128, 0, 128, 255);
-	SDL_RenderDrawLine(renderer, 0, 100, width, 100);
 
 	int basePoints = 3;
 	bool Multy = true;
@@ -98,7 +93,7 @@ int main(int argc, char* argv[])
 	//=========================
 	while (IsRUN)
 	{
-
+#pragma region INPUT
 		while (SDL_PollEvent(&sdlEvent))
 		{
 			switch (sdlEvent.type)
@@ -126,60 +121,30 @@ int main(int argc, char* argv[])
 
 			}
 		}
+#pragma endregion
 
+#pragma region DRAWNING
 
-        #pragma region DRAWNING
-		SDL_SetRenderDrawColor(renderer, 128, 128, 0, 255);
-		SDL_RenderClear(renderer);
+		//---------------- OLD Drawning Button DRAWNING
+		//SDL_Rect scrRect = { 0, 0, 512, 512 };
+		//SDL_Rect dstRect = { 100, 100, 200, 200 };
 
-		int countPoints = basePoints;
-		SDL_Point* points = (SDL_Point*)malloc(sizeof(SDL_Point) * (countPoints + 1));
-
-		float alfa = 0;
-		for (int i = 0; i < countPoints; i++)
-		{
-			alfa += 2 * M_PI / countPoints;
-			mathCoordsToScreen(200 * cos(alfa), 200 * sin(alfa), 1.0,
-				//win_width / 2, win_height / 2,
-				mouse_x, mouse_y,
-				points[i].x, points[i].y);
-		}
-
-		points[countPoints] = points[0];
-		SDL_SetRenderDrawColor(renderer, 100, 50, 0, 255);
-		SDL_RenderDrawLines(renderer, points, countPoints + 1);
-
-		free(points);
-
-		if (Multy)
-		{
-			basePoints++;
-		}
-		else
-		{
-			basePoints--;
-		}
-
-		if (Multy && basePoints > 100 || !Multy && basePoints <= 3)
-		{
-			Multy = !Multy;
-		}
-        #pragma endregion
-
+		//SDL_BlitSurface(surface, &scrRect, win_surf, NULL);//&dstRect);
+		//SDL_UpdateWindowSurface(window);
 		//----------------
-		SDL_Rect scrRect = { 0, 0, 512, 512 };
-		SDL_Rect dstRect = { 100, 100, 200, 200 };
 
-		SDL_BlitSurface(surface, &scrRect, win_surf, NULL);//&dstRect);
-		SDL_UpdateWindowSurface(window);
-		//----------------
+		//------------------------New Drawning Image
+
+
+		//------------------------
+#pragma endregion
 
 	    //SDL_RenderPresent(renderer);
 	    SDL_Delay(100);
 
     }
 
-	SDL_FreeSurface(surface);
+	//SDL_FreeSurface(surface);
 
 	DeInitSDL(0);
 	return 0;
