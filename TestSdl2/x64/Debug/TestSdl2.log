@@ -1,4 +1,22 @@
-﻿  Source.cpp
-F:\GIT\SDLtest\TestSdl2\Source.cpp(60,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-F:\GIT\SDLtest\TestSdl2\Source.cpp(61,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+﻿  AnimatedObject.cpp
+  Button.cpp
+F:\GIT\SDLtest\TestSdl2\Button.cpp(20,25): warning C4244: =: преобразование "Uint32" в "float", возможна потеря данных
+F:\GIT\SDLtest\TestSdl2\Button.cpp(27,24): warning C4244: =: преобразование "Uint32" в "float", возможна потеря данных
+  CasinoSlot.cpp
+F:\GIT\SDLtest\TestSdl2\ObjectFactory.h(35,1): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+F:\GIT\SDLtest\TestSdl2\CasinoSlot.cpp(106,16): warning C4244: инициализация: преобразование "float" в "Uint32", возможна потеря данных
+  Game.cpp
+F:\GIT\SDLtest\TestSdl2\ObjectFactory.h(35,1): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+F:\GIT\SDLtest\TestSdl2\Game.cpp(99,35): warning C4244: =: преобразование "Uint32" в "float", возможна потеря данных
+F:\GIT\SDLtest\TestSdl2\Game.cpp(103,25): warning C4244: аргумент: преобразование "float" в "Uint32", возможна потеря данных
+  GameObject.cpp
+  ImageObject.cpp
+  main.cpp
+F:\GIT\SDLtest\TestSdl2\ObjectFactory.h(35,1): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  ObjectFactory.cpp
+F:\GIT\SDLtest\TestSdl2\ObjectFactory.h(35,1): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  TextObject.cpp
+  TextureLoader.cpp
+  Timer.cpp
+  Создание кода...
   TestSdl2.vcxproj -> F:\GIT\SDLtest\x64\Debug\TestSdl2.exe

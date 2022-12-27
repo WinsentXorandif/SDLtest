@@ -19,7 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="AnimatedObject.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CasinoSlot.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="ImageObject.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="TextureLoader.cpp" />
+    <ClCompile Include="Timer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnimatedObject.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="CasinoSlot.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ImageObject.h" />
+    <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="TextureLoader.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -1,6 +1,16 @@
 f:\git\sdltest\testsdl2\x64\debug\vc142.pdb
 f:\git\sdltest\testsdl2\x64\debug\vc142.idb
-f:\git\sdltest\testsdl2\x64\debug\source.obj
+f:\git\sdltest\testsdl2\x64\debug\timer.obj
+f:\git\sdltest\testsdl2\x64\debug\textureloader.obj
+f:\git\sdltest\testsdl2\x64\debug\textobject.obj
+f:\git\sdltest\testsdl2\x64\debug\objectfactory.obj
+f:\git\sdltest\testsdl2\x64\debug\main.obj
+f:\git\sdltest\testsdl2\x64\debug\imageobject.obj
+f:\git\sdltest\testsdl2\x64\debug\gameobject.obj
+f:\git\sdltest\testsdl2\x64\debug\game.obj
+f:\git\sdltest\testsdl2\x64\debug\casinoslot.obj
+f:\git\sdltest\testsdl2\x64\debug\button.obj
+f:\git\sdltest\testsdl2\x64\debug\animatedobject.obj
 f:\git\sdltest\testsdl2\x64\debug\testsdl2.ilk
 f:\git\sdltest\x64\debug\testsdl2.exe
 f:\git\sdltest\x64\debug\testsdl2.pdb
