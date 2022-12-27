@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-C:\GIT\SDLtest\TestSdl2\Source.cpp(60,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\GIT\SDLtest\TestSdl2\Source.cpp(61,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  TestSdl2.vcxproj -> C:\GIT\SDLtest\x64\Debug\TestSdl2.exe
+F:\GIT\SDLtest\TestSdl2\Source.cpp(60,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+F:\GIT\SDLtest\TestSdl2\Source.cpp(61,12): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  TestSdl2.vcxproj -> F:\GIT\SDLtest\x64\Debug\TestSdl2.exe

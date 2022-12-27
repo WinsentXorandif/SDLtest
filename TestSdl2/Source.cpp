@@ -19,7 +19,7 @@ void DeInitSDL(int error)
 
 }
 
-void InitSDL() 
+void InitSDL()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
@@ -28,7 +28,7 @@ void InitSDL()
 	}
 
 	int res;
-	if ((res = IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG )) == 0)
+	if ((res = IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG)) == 0)
 	{
 		printf("Init SDL_Image Error: %s", SDL_GetError());
 		DeInitSDL(1);
@@ -36,10 +36,10 @@ void InitSDL()
 	if (res & IMG_INIT_PNG)printf("Initialized PNG library!\n");
 	if (res & IMG_INIT_JPG)printf("Initialized JPG library!\n");
 
-	window = SDL_CreateWindow("Test SDL Window", 
-		SDL_WINDOWPOS_CENTERED, 
+	window = SDL_CreateWindow("Test SDL Window",
 		SDL_WINDOWPOS_CENTERED,
-		width, height, 
+		SDL_WINDOWPOS_CENTERED,
+		width, height,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	if (window == NULL)
 	{
@@ -55,27 +55,34 @@ void InitSDL()
 	}
 }
 
-void mathCoordsToScreen(double x, double y, double scale, int centerX, int centerY, int &sx, int &sy) 
+void mathCoordsToScreen(double x, double y, double scale, int centerX, int centerY, int& sx, int& sy)
 {
 	sx = round(centerX + x * scale);
 	sy = round(centerY - y * scale);
 }
+
 
 int main(int argc, char* argv[])
 {
 	InitSDL();
 
 	//----------------OLD Drawning Button setup
-	/*
-	SDL_Surface* surface = IMG_Load("Image/start33.png");
-	if (surface == NULL) 
+	SDL_Surface* surfaceButton = IMG_Load("Image/start33.png");
+	if (surfaceButton == NULL)
+	{
+		printf("Could not load image! Error: %s", SDL_GetError());
+		DeInitSDL(1);
+	}
+	//----------------OLD Drawning SpriteAll setup
+	SDL_Surface* surfaceSpriteAll = IMG_Load("Image/spriteall.png");
+	if (surfaceSpriteAll == NULL)
 	{
 		printf("Could not load image! Error: %s", SDL_GetError());
 		DeInitSDL(1);
 	}
 
 	SDL_Surface* win_surf = SDL_GetWindowSurface(window);
-	*/
+
 	//----------------
 
 	int basePoints = 3;
@@ -91,6 +98,9 @@ int main(int argc, char* argv[])
 	int mouse_y = win_height / 2;
 
 	//=========================
+	int x = 0, y = 0;
+	int delta = 12;
+
 	while (IsRUN)
 	{
 #pragma region INPUT
@@ -126,27 +136,45 @@ int main(int argc, char* argv[])
 #pragma region DRAWNING
 
 		//---------------- OLD Drawning Button DRAWNING
-		//SDL_Rect scrRect = { 0, 0, 512, 512 };
-		//SDL_Rect dstRect = { 100, 100, 200, 200 };
+		SDL_Rect scrRectButton = { 0, 0, 512, 512 };
+		SDL_Rect dstRectButton = { 100, 100, 200, 200 };
 
-		//SDL_BlitSurface(surface, &scrRect, win_surf, NULL);//&dstRect);
-		//SDL_UpdateWindowSurface(window);
+		SDL_BlitSurface(surfaceButton, &scrRectButton, win_surf, NULL);//&dstRect);
+		//---------------- OLD Drawning SpriteAll DRAWNING
+		SDL_Rect scrRectSprite = { 0, y, 100, 100 };
+		SDL_Rect dstRectSprite = { 300, 300, 400, 400 };
+
+		y += delta;
+
+		//printf("y = %d\n",y);
+
+		if (y > 160) y = 0;
+
+		//if (y > 600) delta = -2;
+		//if (y < 0) delta = 2;
+
+		SDL_BlitSurface(surfaceSpriteAll, &scrRectSprite, win_surf, &dstRectSprite);//&dstRect);
+
+		SDL_UpdateWindowSurface(window);
 		//----------------
 
-		//------------------------New Drawning Image
+		//================================= New Drawning Image
+		//fsm, дерево поведения, боксинг анбоксинг. рут гар. коллект, , даб
 
 
-		//------------------------
+
+		//=================================
 #pragma endregion
 
-	    //SDL_RenderPresent(renderer);
-	    SDL_Delay(100);
+		//SDL_RenderPresent(renderer);
+		SDL_Delay(100);
 
-    }
+	}
 
-	//SDL_FreeSurface(surface);
-
+	SDL_FreeSurface(surfaceButton);
+	SDL_FreeSurface(surfaceSpriteAll);
 	DeInitSDL(0);
 	return 0;
 
 }
+
