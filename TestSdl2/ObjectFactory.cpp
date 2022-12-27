@@ -10,7 +10,7 @@ ObjectFactory::ObjectFactory(SDL_Renderer* renderer, TTF_Font* font)
 
 void ObjectFactory::LoadObjects()
 {
-	TestFPS = new TextObject("GameFPS: ", 10, 10, 200, 50, textColor, gameFont, gameRenderer);
+	TestFPS = new TextObject("GameFPS: ", 690, 690, 200, 50, textColor, gameFont, gameRenderer);
 
 	maxSpriteClips = 14;
 	const char* fileNameSprites = "Resources/Images/spriteall3.png";
