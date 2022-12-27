@@ -16,42 +16,42 @@ void ObjectFactory::LoadObjects()
 	const char* fileNameSprites = "Resources/Images/spriteall3.png";
 
 	imagesList.clear();
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 190, 200, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 190, 310, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 190, 420, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 240, 200, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 240, 310, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 240, 420, 100, 100, 14, 14, gameRenderer));
 
 	imagesMap.insert({ 0, imagesList });
 
 	imagesList.clear();
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 300, 200, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 300, 310, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 300, 420, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 350, 200, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 350, 310, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 350, 420, 100, 100, 14, 14, gameRenderer));
 
 	imagesMap.insert({ 1, imagesList });
 
 	imagesList.clear();
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 410, 200, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 410, 310, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 410, 420, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 460, 200, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 460, 310, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 460, 420, 100, 100, 14, 14, gameRenderer));
 
 	imagesMap.insert({ 2, imagesList });
 
 	imagesList.clear();
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 520, 200, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 520, 310, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 520, 420, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 570, 200, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 570, 310, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 570, 420, 100, 100, 14, 14, gameRenderer));
 
 	imagesMap.insert({ 3, imagesList });
 
 	imagesList.clear();
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 630, 200, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 630, 310, 100, 100, 14, 14, gameRenderer));
-	imagesList.push_back(new AnimatedObject(fileNameSprites, 630, 420, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 680, 200, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 680, 310, 100, 100, 14, 14, gameRenderer));
+	imagesList.push_back(new AnimatedObject(fileNameSprites, 680, 420, 100, 100, 14, 14, gameRenderer));
 
 	imagesMap.insert({ 4, imagesList });
 
-	backGround = new ImageObject("Resources/Images/background2.png", 0, 0, 1280, 800, gameRenderer);
-	button = new Button("Resources/Images/start33.png", 800, 280, 256, 115, gameRenderer);
+	backGround = new ImageObject("Resources/Images/greenflowers.png", 0, 0, 1024, 768, gameRenderer);
+	button = new Button("Resources/Images/start33.png", 650, 580, 256, 115, gameRenderer);
 }
 
 void ObjectFactory::AnimateObjects(bool isAnimate)
